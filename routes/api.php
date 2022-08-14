@@ -45,6 +45,7 @@ Route::group([
         Route::post("create", [CardController::class,'create']);
         Route::put("update/{id}/", [CardController::class,'update']);
         Route::delete("destroy/{id}/", [CardController::class,'destroy']);
+        Route::put("quantity-update/{id}/", [CardController::class,'quantity_update']);
     });
 
 });

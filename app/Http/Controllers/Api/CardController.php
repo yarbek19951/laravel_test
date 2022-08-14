@@ -18,6 +18,7 @@ class CardController extends Controller
 
     public function index(Request $request){
         $query = Card::query();
+        $query->with(["user","product"]);
         $query->where("user_id",auth('api')->id());
         if($request->has("product_id")){
             $query->where("product_id",$request->get("product_id"));
