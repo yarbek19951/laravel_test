@@ -17,12 +17,11 @@ class UserController extends Controller
     }
 
     public function index(Request $request){
-        $per_page = $request->get('per_page', 20);
 
-        $users = User::paginate($per_page);
+        $user = User::where("id",auth('api')->id())->first();
         return response()->json([
             "status"=>1,
-            "data"=>$users
+            "data"=>$user
         ],Response::HTTP_OK);
     }
 

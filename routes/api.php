@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\CardController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -36,6 +37,14 @@ Route::group([
         Route::post("create", [ProductController::class,'create']);
         Route::put("update/{id}/", [ProductController::class,'update']);
         Route::delete("destroy/{id}/", [ProductController::class,'destroy']);
+    });
+    Route::group([
+        'prefix'=>'card'
+    ], function ($router){
+        Route::get("", [CardController::class,'index']);
+        Route::post("create", [CardController::class,'create']);
+        Route::put("update/{id}/", [CardController::class,'update']);
+        Route::delete("destroy/{id}/", [CardController::class,'destroy']);
     });
 
 });
